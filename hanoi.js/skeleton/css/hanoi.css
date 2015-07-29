@@ -82,3 +82,7 @@ ul {
 .empty {
   visibility: hidden;
 }
+
+.pile.clicked {
+  border-bottom: 10px solid red;
+}

@@ -8,6 +8,8 @@
     this.$el = $el;
     this.setupTowers();
     this.render();
+    this.installClickHandlers();
+    this.pileId = null;
   };
 
   View.prototype.setupTowers = function () {
@@ -24,7 +26,7 @@
     }
   };
 
-  View.prototype.render = function() {
+  View.prototype.render = function () {
     $(".disc").removeClass("size-1 size-2 size-3").addClass("empty");
 
     for (var i = 0; i < this.game.towers.length; i++) {
@@ -39,5 +41,35 @@
           .removeClass("empty");
       }
     }
+  };
+
+  View.prototype.installClickHandlers = function () {
+    var view = this;
+    $(".pile").click(function (event) {
+      var $pile = $(event.currentTarget);
+      view.clickTower($pile);
+    });
+  };
+
+  View.prototype.clickTower = function ($pile) {
+    $pile.addClass("clicked");
+
+    if (this.pileId !== null) {
+      try {
+        var moveResult = this.game.move(this.pileId, $pile.data("id"));
+        if (moveResult === false) {
+          throw "MoveError";
+        }
+      } catch (e) {
+        alert("Invalid Move");
+      } finally {
+        $(".pile").removeClass("clicked");
+        this.pileId = null;
+        this.render();
+        return;
+      }
+    }
+
+    this.pileId = $pile.data("id");
   };
 })();
