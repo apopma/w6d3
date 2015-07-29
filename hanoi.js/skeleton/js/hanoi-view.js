@@ -48,6 +48,7 @@
     $(".pile").click(function (event) {
       var $pile = $(event.currentTarget);
       view.clickTower($pile);
+      view.checkVictory();
     });
   };
 
@@ -71,5 +72,13 @@
     }
 
     this.pileId = $pile.data("id");
+  };
+
+  View.prototype.checkVictory = function () {
+    if (this.game.isWon()) {
+      $(".disc").addClass("disc-win");
+      $(".pile").addClass("pile-win").off();
+      alert("Good work, you!");
+    }
   };
 })();

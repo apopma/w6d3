@@ -86,3 +86,11 @@ ul {
 .pile.clicked {
   border-bottom: 10px solid red;
 }
+
+.pile.pile-win:hover {
+  border-bottom: 10px solid black;
+}
+
+.disc.disc-win {
+  background-color: green;
+}
