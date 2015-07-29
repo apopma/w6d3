@@ -57,7 +57,7 @@ body {
 
 .square {
   float: left;
-  font-size: 24px;
+  font-size: 64px;
   background-color: gray;
   width: 33%;
   height: 100%;
@@ -66,10 +66,12 @@ body {
 
 .square.full-square {
   background-color: white;
+  line-height: 150px;
 }
 
 .square.full-square:hover {
   background-color: lightgray;
+  cursor: default;
 }
 
 .square:hover {

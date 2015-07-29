@@ -6,7 +6,6 @@
   var View = TTT.View = function (game, $el) {
     this.game = game;
     this.$el = $el;
-
     this.setupBoard();
     this.bindEvents();
   };
@@ -30,6 +29,22 @@
     }
     catch (MoveError) {
       alert("That move was invalid!");
+    }
+    finally {
+      var $endMsg = $(".end-msg")
+
+      if (this.game.isOver()) {
+        $('.square').off();
+        var gameWinner = this.game.winner();
+
+        if (gameWinner !== null) {
+          $endMsg.text(gameWinner.toUpperCase() + " wins! Congratulations!");
+          return;
+        }
+        
+        $endMsg.text("It's a draw!")
+        return;
+      }
     }
   };
 
