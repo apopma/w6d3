@@ -78,3 +78,7 @@ ul {
 .size-1 {
   width: calc(33.333333% - 20px);
 }
+
+.empty {
+  visibility: hidden;
+}
