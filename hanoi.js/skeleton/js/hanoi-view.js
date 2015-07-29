@@ -15,9 +15,8 @@
       $pile.data("id", i);
 
       if (i === 0) {
-        for (var j = 3; j > 0; j--) {
-          var $disc = $("<div>").addClass("disc");
-          $disc.data("size", j);
+        for (var j = 1; j <= 3; j++) {
+          var $disc = $("<div>").addClass("disc").addClass("size-" + j);
           $pile.append($disc);
         }
       }
