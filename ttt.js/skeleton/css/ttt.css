@@ -64,6 +64,23 @@ body {
   border: 3px solid black;
 }
 
+.square.full-square {
+  background-color: white;
+}
+
+.square.full-square:hover {
+  background-color: lightgray;
+}
+
 .square:hover {
   background-color: yellow;
+  cursor: pointer;
+}
+
+.x {
+  color: red;
+}
+
+.o {
+  color: blue;
 }

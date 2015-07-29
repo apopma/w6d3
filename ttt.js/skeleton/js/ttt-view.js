@@ -6,12 +6,31 @@
   var View = TTT.View = function (game, $el) {
     this.game = game;
     this.$el = $el;
+
+    this.setupBoard();
+    this.bindEvents();
   };
 
   View.prototype.bindEvents = function () {
+    var view = this;
+    $('.square').click(function (event) {
+      var $square = $(event.currentTarget);
+      view.makeMove($square);
+    });
   };
 
   View.prototype.makeMove = function ($square) {
+    var pos = $square.data().pos;
+    var currentPlayerClass = this.game.currentPlayer;
+
+    try {
+      this.game.playMove(pos);
+      $square.addClass("full-square").addClass(currentPlayerClass);
+      $square.text(currentPlayerClass.toUpperCase());
+    }
+    catch (MoveError) {
+      alert("That move was invalid!");
+    }
   };
 
   View.prototype.setupBoard = function () {
